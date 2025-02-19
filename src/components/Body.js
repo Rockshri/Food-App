@@ -3,20 +3,19 @@ import React from "react";
 import { SWIGGY_API_URL } from "../utils/constant";
 import RestaurantCard, { withOfferLabel } from "./RestaurantCard";
 import Shimmers from "./Shimmer";
-import useOnlineStatus from "../utils/useOnlineStatus";
+import useOnlineStatus from "../utils/useOnlineStatus"; 
 import { Link } from "react-router-dom";
 import UserContext from "../utils/UserContext";
 
 const Body = () => {
   const [listofRestaurant, setlistOfRestaurant] = useState([]);
   const [filteredlist, setfilteredlist] = useState([]);
-
   const [searchtext, setSearchtext] = useState("");
 
   const RestaurantCardOffer = withOfferLabel(RestaurantCard);
   
   const data = useContext(UserContext);
-  const {loggedInUser, setuserName} = data;
+  const { loggedInUser, setuserName } = data; 
 
 
   useEffect(() => {
@@ -26,10 +25,10 @@ const Body = () => {
   }, []);
 
   const fetchdata = async () => {
-    const data = await fetch(SWIGGY_API_URL);
-    console.log(data);
+    const data = await fetch( SWIGGY_API_URL );
+    console.log( data );
     const json = await data.json();
-    console.log(json);
+    console.log( json );
     setlistOfRestaurant(
       json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants
     );
@@ -47,7 +46,7 @@ const Body = () => {
 
   let useonlinestatus = useOnlineStatus();
   console.log(useonlinestatus);
-  if (useonlinestatus === "false") {
+  if ( useonlinestatus === "false" ) {
     return <h1>Look like you are offline!!! Check your Internet Connection</h1>;
   }
 
@@ -62,6 +61,7 @@ const Body = () => {
         <div className="search">
           <input
             type="text"
+            data-testid = "searchinput"
             className="border border-solid border-black"
             value={searchtext}
             onChange={(e) => {
@@ -87,29 +87,30 @@ const Body = () => {
         </div>
         <button
           className="px-5 py-2 bg-green-500 m-2 rounded-lg"
-          onClick={clickhandler}
+          onClick={ clickhandler }
         >
           Top Rated Restaurants
         </button>
          <label className="my-auto">Enter name</label>
-         <input type="text" className="border-black border-2" onChange={ (e)=>setuserName(e.target.value) }></input>
+         <input
+          type="text" className="border-black border-2" onChange={ (e)=>setuserName(e.target.value) }></input>
       </div>
 
       <div className="flex flex-wrap">
-        {filteredlist?.map((restaurant) => {
+        { filteredlist?.map(( restaurant ) => {
           return (
             <Link
-              to={"/restaurant/" + restaurant.info.id}
-              key={restaurant.info.id}
+              to={ "/restaurant/" + restaurant.info.id }
+              key={ restaurant.info.id }
             >
-              {Object.keys(
+              { Object.keys(
                 restaurant.info.aggregatedDiscountInfoV3 ||
                   restaurant.info.aggregatedDiscountInfoV2
               ).length !== 0 ? (
                 <RestaurantCardOffer resData={restaurant} />
               ) : (
                 <RestaurantCard resData={restaurant} />
-              )}
+              ) }
             </Link>
           );
         })}

@@ -3,7 +3,7 @@ import ReactDOM from "react-dom/client";
 import Header from "./components/Header";
 import Body from "./components/Body";
 import About from "./components/About";
-import {createBrowserRouter, Outlet, RouterProvider} from "react-router-dom";
+import { createBrowserRouter, Outlet, RouterProvider } from "react-router-dom";
 import Contact from "./components/Contact";
 import Error from "./components/Error";
 import RestaurantMenu from "./components/RestaurantMenu";
@@ -46,7 +46,7 @@ const [userName, setuserName] = useState();
     return(
         //here we r providing store to the app by using provider...
         <Provider store={appStore}>
-          <UserContext.Provider value={{ loggedInUser : userName, setuserName }} >
+          <UserContext.Provider value={ { loggedInUser : userName, setuserName } } >
                   <div className="app">
                     <Header/> 
                     <Outlet/>
@@ -89,7 +89,6 @@ const appRouter = createBrowserRouter([
     }
     
 ]);
-
 
 
 
