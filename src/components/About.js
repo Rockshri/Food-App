@@ -19,7 +19,7 @@ const About = ()=>{
           {console.log("4")
           }
           <h1>About us</h1>
-          <h2>This is bout us</h2>
+          <h2>This is about us</h2>
           {/* <User1/>
           <User2/> */}
 

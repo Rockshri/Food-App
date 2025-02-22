@@ -2,7 +2,7 @@
 
 import { fireEvent, render, screen } from "@testing-library/react";
 import MOCK_DATA from "../mocks/mockResListData.json";
-// import { act } from "react-dom/test-utils";
+// import { act } from "react-dom/test-utils"; 
 import { act } from "@testing-library/react";
 import Body from "../Body";
 import { BrowserRouter } from "react-router-dom";
@@ -27,10 +27,9 @@ global.fetch = jest.fn(()=>{
 //act() function.
 //Act() comes from "react-dom/test-utils". 
 //It will assures that all updates and side effects should be performed before assertion were made. 
-describe("Should render Body compponant  with search and top rated restaurant",()=>{
+describe("Should render Body componant with search and top rated restaurant",()=>{
 
-    
-    it("should load the body componant with search", async()=>{
+      it("should load the body componant with search", async()=>{
         await act( async()=>render(
          <BrowserRouter>
         <Body/>

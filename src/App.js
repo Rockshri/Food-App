@@ -13,6 +13,7 @@ import UserContext from "./utils/UserContext";
 //react toolkit and react application.
 import { Provider } from "react-redux";
 import appStore from "./utils/appStore";
+import Cart from "./components/Cart";
 
 // import Grocery from "./components/Grocery"; 
 
@@ -81,6 +82,10 @@ const appRouter = createBrowserRouter([
             path:"/restaurant/:resId",
             element:<RestaurantMenu/>,
         },{
+            path:"/cart",
+            element:<Cart/>
+        },
+        {
             path:"/grocery",
             element:<Suspense fallback={<h1>loaaading</h1>}><Grocery/></Suspense>,
         }

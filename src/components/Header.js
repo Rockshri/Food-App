@@ -3,17 +3,27 @@ import { LOGO_URL } from "../utils/constant";
 import { Link } from "react-router-dom";
 import UserContext from "../utils/UserContext";
 import { useContext } from "react";
+
+import { useSelector } from "react-redux";
 // import { useSelector } from "react-redux";
 
 const Header = ()=>{
+    const cartItems = useSelector((store)=>store.cart.items);
      const [btnName, setBtnName] = useState("Login");
     const data = useContext(UserContext);
     const {loggedInUser} = data;
+
     // console.log(data);
 
     //Selectors of Redux : It is used to subscribing react to the store that means
     // react reads the live data from the app store using selector hook
     //  const cartItems = useSelector((store)=>store.cart.items);
+
+   
+    // const dispatch = useDispatch();
+    console.log(cartItems);
+    
+
 
     return(
         <div className="flex justify-between shadow-lg">
@@ -30,7 +40,7 @@ const Header = ()=>{
                     <li className="px-2"><Link to={"/contact"}>Contact us</Link></li>
                     <li className="px-2"><Link to={"/grocery"}>Grocery</Link></li>
                     {/* - ({cartItems.length}) */}
-                    <li className="px-2 font-bold text-xl">Cart  </li>
+                    <li className="px-2 font-bold text-xl"><Link to={"/cart"}>Cart - {cartItems.length}</Link> </li>
                     <button className="px-2" onClick={()=>{
                         btnName ==="Login" ? 
                         setBtnName("Logout") : 

@@ -2,19 +2,23 @@ import { fireEvent, render, screen } from "@testing-library/react";
 import { BrowserRouter } from "react-router-dom";
 import Header from "../Header";
 import "@testing-library/jest-dom";
+import { Provider } from "react-redux";
+import appStore from "../../utils/appStore";
 
 
 it("Should render Header componant with a login button", ()=>{
     
     //we have to provide every dependencies which i have used in <Header/> componant.
     //like if we r using redux store in Header componant then we have to provide it or 
-    //if we r using any function of react router dom then we have to provide context of react router dom in test file as well.
+    //if we r using any function of react-router-dom then we have to provide context of react-router-dom in test file as well.
     // render(<Header/>); This gives error.
     //to get rid of this.
     render(
+    <Provider store={appStore}>
     <BrowserRouter> 
     <Header/>
     </BrowserRouter> 
+    </Provider>    
 );
     //Querying
     // const loginButton = screen.getByRole("button");

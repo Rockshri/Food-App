@@ -27,13 +27,15 @@ const RestaurantCategory = (props)=>{
         <div>
             {/* Accordian Header */}
           <div className="w-6/12 bg-slate-300 shadow-lg p-4 mx-auto my-2 rounded">
-            <div className="flex justify-between cursor-pointer" onClick={clickHandler} >
-            <span className="font-bold">{data.title} ( {data.itemCards.length} )</span>
+            <div className="flex justify-between cursor-pointer" onClick={clickHandler}>
+            <span className="font-bold">{data.title} ({data.itemCards.length})</span>
             <span className="font-bold">{showItems ?"⬆️":"⬇️"}</span>
             </div>
 
             {/* Accordian Body */}
-            {showItems && <Itemcards list={data.itemCards}/>}
+            {
+              showItems && <Itemcards list={data.itemCards}/>
+            }
           </div>
           
           

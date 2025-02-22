@@ -15,7 +15,7 @@ it("should render RestaurantCard componant with props data",()=>{
      expect(name).toBeInTheDocument();
 });
 
-it("should render Offer Restauarant card with props data", ()=>{
+it("should render Offer Restaurant card with props data", ()=>{
      const RestaurantCardOffer = withOfferLabel(RestaurantCard);
 
      render(<RestaurantCardOffer resData={ MOCK_DATA[1] } />);
